@@ -1,0 +1,59 @@
+service: serverless-sequelize-migrations
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ${opt:region, 'us-east-2'}
+
+functions:
+  migrate:
+    handler: dist/services/handler.runMigrations
+    events:
+      - http:
+          path: run-migrations
+          method: post
+    timeout: 30
+  undoMigrations:
+    handler: dist/services/handler.undoMigrations
+    events:
+      - http:
+          path: undo-migrations
+          method: post      
+    timeout: 30
+  hello:
+    handler: dist/services/handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get
+
+  getUser:
+    handler: dist/services/handler.getUser
+    events:
+      - http:
+          path: /user/{id}
+          method: get
+
+  createUser:
+    handler: dist/services/handler.createUser
+    events:
+      - http:
+          path: /user
+          method: post
+
+  updateUser:
+    handler: dist/services/handler.updateUser
+    events:
+      - http:
+          path: /user/{id}
+          method: patch
+
+  deleteUser:
+    handler: dist/services/handler.deleteUser
+    events:
+      - http:
+          path: /user/{id}
+          method: delete
+        
+plugins:
+  - serverless-offline
