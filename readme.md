@@ -21,14 +21,14 @@ The project is organized into the following main directories:
 - **src/models**: Sequelize models for products and users.
 - **src/services**: Service handlers for various HTTP methods.
 - **src/utils**: Utility functions for Sequelize configuration.
-- **.env**: Environment variables configuration.
+- **.env**: Environment variables configuration (see [.env.example](.env.example) for an example).
 - **serverless.yml**: Serverless Framework configuration.
 - **tsconfig.json**: TypeScript compiler configuration.
 - **package.json**: Node.js project configuration.
 
 ## Configuration
 
-Database configuration is handled in `src/config/config.ts`. Environment-specific configurations are stored in the `.env` file.
+Database configuration is handled in `src/config/config.ts`. Environment-specific configurations are stored in the `.env` file. You can refer to the example in [.env.example](.env.example) for guidance on setting up your `.env` file.
 
 ## Scripts
 
@@ -46,12 +46,13 @@ The project provides several npm scripts for common tasks:
 ## Usage
 
 1. Clone the repository: `git clone https://github.com/saransh619/Serverless_Core.git`
-2. Navigate to the project directory: `cd serverless_core`
+2. Navigate to the project directory: `cd Serverless_Core`
 3. Install dependencies: `npm install`
-4. Configure environment variables in the `.env` file.
-5. Run `npm run build` to compile TypeScript files.
-6. Run `npm run start:dev` to start the application locally using Serverless Offline.
-7. Use the provided HTTP endpoints for various functionalities (e.g., `http://localhost:3000/dev/run-migrations`, `http://localhost:3000/dev/hello`).
+4. Copy `.env.example` to create your `.env` file: `cp .env.example .env`
+5. Configure environment variables in the `.env` file based on your database setup.
+6. Run `npm run build` to compile TypeScript files.
+7. Run `npm run start:dev` to start the application locally using Serverless Offline.
+8. Use the provided HTTP endpoints for various functionalities (e.g., `http://localhost:3000/dev/run-migrations`, `http://localhost:3000/dev/hello`).
 
 For deployment, use `npm run deploy` and for removal, use `npm run remove`.
 
